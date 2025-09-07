@@ -1,0 +1,43 @@
+spring:
+  application:
+   name: monolithic
+  datasource:
+   username: school
+   password: school
+   driver-class-name: org.postgresql.Driver
+   url: jdbc:postgresql://localhost:5432/postgres
+   hikari:
+     schema: school
+  jpa:
+   database: postgresql
+   open-in-view: false
+   show-sql: true
+   hibernate:
+     ddl-auto: none
+   properties:
+     #org.hibernate.envers.default_schema: ahmed_audit
+     #jakarta.persistence.query.timeout: 50000
+     #jakarta.persistence.lock.timeout: 50000
+     hibernate:
+       default_schema: school
+       enable_lazy_load_no_trans:
+
+server:
+  port: 8085
+
+logging:
+  level:
+    root: info
+    org.springframework.web: info
+    #    oracle.ucp: trace
+    org.hibernate.SQL: DEBUG
+    org.hibernate.envers: trace
+    org.hibernate.type: info
+    org.hibernate.orm.jdbc.bind: trace
+    org.hibernate.orm.jdbc.extract: info
+    org.springframework.data.redis: DEBUG
+    org.springframework.cache: DEBUG
+    org.springframework.core.LocalVariableTableParameterNameDiscoverer: ERROR
+
+
+
