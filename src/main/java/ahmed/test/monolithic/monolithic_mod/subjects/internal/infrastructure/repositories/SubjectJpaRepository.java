@@ -26,8 +26,8 @@ public class SubjectJpaRepository implements ISubjectRepository {
     }
 
     @Override
-    public Optional<Subject> findBySubjectId(SubjectId subjectId) {
-        return subjectRepository.findBySubjectId(subjectId.value())
-                .map( subjectMapper::toDomain);
+    public Subject findBySubjectId(SubjectId subjectId) {
+        return subjectMapper.toDomain( subjectRepository.findBySubjectId(subjectId.value()));
+
     }
 }

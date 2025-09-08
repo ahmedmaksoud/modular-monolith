@@ -82,12 +82,12 @@ public class RegistrarStudentService extends ApplicationService {
 
         List<SubjectDTO> subjectsByLanguage =  subjectGateway.getByLanguageAndSubjectId(userLang, registerSubject.subjectId());
 
-        Optional<SubjectDTO> addedSubjectDetails = subjectGateway.getBySubjectId(registerSubject.subjectId());
-        Optional<List<StudentSubjects>>  studentSubjects = studentSubjectRepository.findByStudentId(student.get().getStudentId());
-        student.get().registerStudentSubjects(studentSubjects, addedSubjectDetails,  registerSubject.subjectId(), subjectsByLanguage,  userLang) ;
+        SubjectDTO addedSubjectDetails = subjectGateway.getBySubjectId(registerSubject.subjectId());
+        List<StudentSubjects>  studentSubjects = studentSubjectRepository.findByStudentId(student.get().getStudentId());
+        student.get().enrollInSubject(registerSubject.subjectId(), addedSubjectDetails, subjectsByLanguage,  userLang, studentSubjects); ;
         //.get().getStudendSubjectsList()
 
-        student.get().getStudendSubjectsList().stream().forEach(s -> {
+        student.get().getSubjects().stream().forEach(s -> {
             studentSubjectRepository.save(s);
         });
 

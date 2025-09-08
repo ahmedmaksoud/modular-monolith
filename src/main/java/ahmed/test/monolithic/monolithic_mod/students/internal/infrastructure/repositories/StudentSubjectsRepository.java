@@ -11,5 +11,5 @@ import java.util.Optional;
 
 public interface StudentSubjectsRepository extends ListCrudRepository<StudentSubjectsEntity, Integer> {
 
-    Optional<List<StudentSubjectsEntity>> findByStudentId(Integer studentId);
+    List<StudentSubjectsEntity> findByStudentId(Integer studentId);
 }

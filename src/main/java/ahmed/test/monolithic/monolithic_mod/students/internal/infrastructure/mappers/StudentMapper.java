@@ -44,7 +44,7 @@ public final class StudentMapper {
         e.setLastName(d.getLastName());   // or d.getLastName()
 
         if(e.getStudentSubjects() == null )  e.setStudentSubjects(new ArrayList<>());
-        if(d.getStudendSubjectsList() != null ) e.setStudentSubjects(d.getStudendSubjectsList().stream().map(studentSubjectsMapper::toEntity).toList() ) ;
+        if(d.getSubjects() != null ) e.setStudentSubjects(d.getSubjects().stream().map(studentSubjectsMapper::toEntity).toList() ) ;
         return e;
     }
 }

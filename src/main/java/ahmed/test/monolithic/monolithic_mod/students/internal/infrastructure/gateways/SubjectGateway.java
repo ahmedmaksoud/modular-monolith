@@ -19,7 +19,7 @@ public class SubjectGateway {
         return iSubjectAPI.getByLanguageAndSubjectId(language, subjectId);
     }
 
-    public Optional<SubjectDTO> getBySubjectId(Integer subjectId) {
+    public SubjectDTO getBySubjectId(Integer subjectId) {
         return iSubjectAPI.getBySubjectId(subjectId);
     }
 }

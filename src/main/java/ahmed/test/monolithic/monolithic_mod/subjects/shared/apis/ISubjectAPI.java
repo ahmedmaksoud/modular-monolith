@@ -10,5 +10,5 @@ public interface ISubjectAPI {
 
     List<SubjectDTO> getByLanguageAndSubjectId(String language,  Integer subjectId);
 
-    Optional<SubjectDTO> getBySubjectId(Integer subjectId);
+    SubjectDTO getBySubjectId(Integer subjectId);
 }

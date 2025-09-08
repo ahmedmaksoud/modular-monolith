@@ -23,12 +23,11 @@ public class StudentSubjectsJpaRepository implements IStudentSubjectRepository {
     }
 
     @Override
-    public Optional<List<StudentSubjects>> findByStudentId(StudentId studentId) {
-        return studentSubjectsRepository.findByStudentId(studentId.value())
-                .map(list -> list.stream()
-                        .map(studentSubjectsMapper::toDomain)
-                        .toList()
-                );
+    public List<StudentSubjects> findByStudentId(StudentId studentId) {
+        return studentSubjectsRepository.findByStudentId(studentId.value()).stream()
+                .map(studentSubjectsMapper::toDomain) // or StudentAssembler::toDomain
+                .toList();
+
     }
 
 

@@ -26,7 +26,7 @@ public class SubjectAPI implements ISubjectAPI{
     }
 
     @Override
-    public Optional<SubjectDTO> getBySubjectId(Integer subjectId) {
-        return subjectRepository.findBySubjectId(new SubjectId( subjectId)).map(subjectMapper::toDTO);
+    public SubjectDTO getBySubjectId(Integer subjectId) {
+        return subjectMapper.toDTO(subjectRepository.findBySubjectId(new SubjectId( subjectId)));
     }
 }

@@ -11,6 +11,6 @@ public interface ISubjectRepository {
 
     public List<Subject> findByLanguageAndSubjectId(String language, Integer subjectId);
 
-    public Optional<Subject> findBySubjectId(SubjectId subjectId);
+    public Subject findBySubjectId(SubjectId subjectId);
 
 }

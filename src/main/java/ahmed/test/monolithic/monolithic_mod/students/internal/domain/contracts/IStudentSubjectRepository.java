@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IStudentSubjectRepository {
-    public Optional<List<StudentSubjects>>  findByStudentId(StudentId studentId);
+    public List<StudentSubjects>  findByStudentId(StudentId studentId);
 
     public StudentSubjectsEntity save(StudentSubjects studentSubjects);
 }

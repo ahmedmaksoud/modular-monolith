@@ -11,6 +11,7 @@ public class SubjectMapper {
 
     // --- JPA -> Domain
     public Subject toDomain(SubjectEntity e) {
+      if (e == null) return null;
         return Subject.create(
             //new SubjectId(e.getId()),
             new SubjectId(e.getSubjectId()),
@@ -41,6 +42,7 @@ public class SubjectMapper {
     }
 
     public SubjectDTO toDTO(Subject  e) {
+        if  (e == null) return null;
         return new SubjectDTO(
                 //new SubjectId(e.getId()),
                 e.getSubjectId().value(),

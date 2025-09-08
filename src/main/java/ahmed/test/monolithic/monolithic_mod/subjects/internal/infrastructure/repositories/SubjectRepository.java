@@ -13,6 +13,6 @@ public interface SubjectRepository extends ListCrudRepository<SubjectEntity, Int
     List<SubjectEntity> findByLanguageAndSubjectId(String language, Integer subjectId);
 
 
-    Optional<SubjectEntity> findBySubjectId(Integer integer);
+    SubjectEntity findBySubjectId(Integer integer);
 
 }
