@@ -1,5 +1,13 @@
 
 
+CREATE TABLE student
+(
+    student_id INTEGER NOT NULL,
+    first_name TEXT,
+    last_name  TEXT
+);
+
+
 
 CREATE TABLE subject
 (
