@@ -38,5 +38,5 @@ mvn test
 ## 📁 Migrations
 Place Flyway SQL files under `src/main/resources/db/migration`.
 
-## 🧾 License
-MIT (if present).
+<img width="5304" height="4240" alt="image" src="https://github.com/user-attachments/assets/8ad1d2ed-a4bd-4010-b341-946d722fe4f1" />
+
