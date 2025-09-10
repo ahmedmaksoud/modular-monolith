@@ -35,6 +35,5 @@ public interface StudentRepository extends ListCrudRepository<StudentEntity, Int
     public Integer getNextStudentId();
 
 
-
-
+    List<StudentEntity> StudentId(Integer studentId);
 }
