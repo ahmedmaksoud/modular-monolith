@@ -1,6 +1,7 @@
 # Monolithic Modular (Spring Boot Modulith)
 
 A pragmatic **modular monolith** built with **Spring Boot 3.5.5**, **Spring Modulith 1.4.1**, **Java 21**, **PostgreSQL**, and **Flyway**.
+Using clean Archticure, technology-agnostic and framework-agnostic 
 
 ## ✨ Tech stack
 - Java 21
