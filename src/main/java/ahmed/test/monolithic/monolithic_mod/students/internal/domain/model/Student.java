@@ -3,11 +3,13 @@ package ahmed.test.monolithic.monolithic_mod.students.internal.domain.model;
 import ahmed.test.monolithic.monolithic_mod.shared.domain.model.AggregateRoot;
 import ahmed.test.monolithic.monolithic_mod.shared.exception.AlreadyEnrolledException;
 import ahmed.test.monolithic.monolithic_mod.shared.exception.NotFoundException;
+import ahmed.test.monolithic.monolithic_mod.students.shared.events.MembershipIssued;
 import ahmed.test.monolithic.monolithic_mod.students.shared.events.MembershipRenewed;
 import ahmed.test.monolithic.monolithic_mod.students.shared.events.StudentRegistered;
 import ahmed.test.monolithic.monolithic_mod.subjects.shared.dto.SubjectDTO;
 
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Student extends AggregateRoot<StudentId> {
@@ -33,7 +35,7 @@ public class Student extends AggregateRoot<StudentId> {
     }
 
     public static Student create(StudentProp p) {
-        return new Student(new StudentId(p.studentId()), p.firstName(), p.lastName(), p.studentSubjectsList(),null);
+        return new Student(new StudentId(p.studentId()), p.firstName(), p.lastName(), p.studentSubjectsList(),p.membership());
     }
 
     public void enrollInSubject(Integer subjectId, SubjectDTO subjectDetails,
@@ -83,9 +85,17 @@ public class Student extends AggregateRoot<StudentId> {
         this.membership = Objects.requireNonNull(renewed, "membership");
     }
 
-    public void applyMembershipRenewal(Membership renewed) {
+    public LocalDate applyMembershipRenewal(Membership renewed) {
         this.assignMembership(renewed);
         // raise event inside the aggregate
         raiseEvent(new MembershipRenewed(studentId.value(), renewed.issueDate(), renewed.expiryDate()));
+        return renewed.expiryDate();
+    }
+
+    public LocalDate applyMembershipIssuance(Membership issued) {
+        this.assignMembership(issued);
+        // raise event inside the aggregate
+        raiseEvent(new MembershipIssued(studentId.value(), issued.issueDate(), issued.expiryDate()));
+        return issued.expiryDate();
     }
 }

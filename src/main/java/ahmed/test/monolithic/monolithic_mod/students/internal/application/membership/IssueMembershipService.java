@@ -5,6 +5,7 @@ import ahmed.test.monolithic.monolithic_mod.students.internal.domain.contracts.I
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Student;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.StudentId;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.services.ExtendFromMaxPolicy;
+import ahmed.test.monolithic.monolithic_mod.students.internal.domain.services.MembershipIsssuance;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.services.MembershipRenewal;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
@@ -13,33 +14,31 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.*;
 
 @Service
-public class RenewMembershipService {
+public class IssueMembershipService {
     private final IStudentRepository repo;
     private final ApplicationEventPublisher events;
 
 
-    public RenewMembershipService(IStudentRepository repo, ApplicationEventPublisher events) {
+    public IssueMembershipService(IStudentRepository repo, ApplicationEventPublisher events) {
         this.repo = repo;
         this.events = events;
     }
 
     @Transactional
-    public RenewMembershipResponse renewMembership(RenewMembershipRequest renewMembershipRequest) {
-        Student student = repo.findByStudentId (new StudentId(renewMembershipRequest.studentId()))
-                .orElseThrow(() -> new NotFoundException("Student not found: " + renewMembershipRequest.studentId()));
+    public IssueMembershipResponse issueMemberShip(IssueMembershipRequest issueMembershipRequest) {
+        Student student = repo.findByStudentId (new StudentId(issueMembershipRequest.studentId()))
+                .orElseThrow(() -> new NotFoundException("Student not found: " + issueMembershipRequest.studentId()));
+
         Clock clock = Clock.systemDefaultZone();
-        LocalDate today = LocalDate.now(clock);
         Period defaultTerm = Period.ofYears(1);
 
-        ExtendFromMaxPolicy renewalPolicy = new ExtendFromMaxPolicy();
-        MembershipRenewal membershipRenewal =  new MembershipRenewal(renewalPolicy);
-
-        LocalDate expDate =  membershipRenewal.renew(student, clock, defaultTerm);
+        MembershipIsssuance membershipIsssuance =  new MembershipIsssuance();
+        LocalDate expDate =  membershipIsssuance.issue(student, clock, defaultTerm);
         repo.saveStudent(student);
         student.occurredEvents().forEach(e -> {
             events.publishEvent(e);
         });
 
-        return new RenewMembershipResponse(expDate);
+        return new IssueMembershipResponse(expDate);
     }
 }

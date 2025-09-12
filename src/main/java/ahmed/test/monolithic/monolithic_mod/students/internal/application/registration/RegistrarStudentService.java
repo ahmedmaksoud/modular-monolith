@@ -49,6 +49,7 @@ public class RegistrarStudentService extends ApplicationService {
                 studNextVal,
                 registerStudent.firstName(), registerStudent.lastName()
                 , registerStudent.registerSubject() != null  ? asList(registerStudent.registerSubject().toDomain(studNextVal)) : null
+                ,null
         ));
         Student saveStudent = studentRepository.saveStudent(student);
 

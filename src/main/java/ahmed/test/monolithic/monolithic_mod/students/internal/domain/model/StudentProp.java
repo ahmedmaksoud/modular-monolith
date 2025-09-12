@@ -5,7 +5,7 @@ import java.util.List;
 public record StudentProp(Integer studentId,
                           String firstName,
                           String lastName
-                          ,List<StudentSubjects> studentSubjectsList
+                          ,List<StudentSubjects> studentSubjectsList, Membership membership
     ) {
 
     public StudentProp {

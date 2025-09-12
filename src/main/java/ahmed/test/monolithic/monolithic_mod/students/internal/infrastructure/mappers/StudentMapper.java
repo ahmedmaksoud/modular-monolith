@@ -1,5 +1,6 @@
 package ahmed.test.monolithic.monolithic_mod.students.internal.infrastructure.mappers;
 
+import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Membership;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Student;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.StudentProp;
 
@@ -27,6 +28,9 @@ public final class StudentMapper {
                 e.getLastName()
                 ,e.getStudentSubjects() !=null
                 && !e.getStudentSubjects().isEmpty() ? e.getStudentSubjects().stream().map(studentSubjectsMapper::toDomain).toList() : null
+                ,  (e.getMembershipIssueDate() != null
+                       && e.getMembershipExpiryDate() !=null)
+                        ? new Membership(e.getMembershipIssueDate(), e.getMembershipExpiryDate()) : null
         ));
     }
 
@@ -45,6 +49,9 @@ public final class StudentMapper {
 
         if(e.getStudentSubjects() == null )  e.setStudentSubjects(new ArrayList<>());
         if(d.getSubjects() != null ) e.setStudentSubjects(d.getSubjects().stream().map(studentSubjectsMapper::toEntity).toList() ) ;
+        if(d.getMembership().isPresent()) e.setMembershipIssueDate(d.getMembership().get().issueDate());
+        if(d.getMembership().isPresent()) e.setMembershipExpiryDate(d.getMembership().get().expiryDate());
+
         return e;
     }
 }

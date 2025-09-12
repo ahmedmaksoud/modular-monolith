@@ -2,6 +2,7 @@ package ahmed.test.monolithic.monolithic_mod.students.internal.infrastructure.db
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -19,6 +20,28 @@ public class StudentEntity {
 
     @Column(name = "last_name", length = Integer.MAX_VALUE)
     private String lastName;
+
+    @Column(name = "membership_issue_date")
+    private LocalDate membershipIssueDate;
+
+    @Column(name = "membership_expiry_date")
+    private LocalDate membershipExpiryDate;
+
+    public LocalDate getMembershipIssueDate() {
+        return membershipIssueDate;
+    }
+
+    public void setMembershipIssueDate(LocalDate membershipIssueDate) {
+        this.membershipIssueDate = membershipIssueDate;
+    }
+
+    public LocalDate getMembershipExpiryDate() {
+        return membershipExpiryDate;
+    }
+
+    public void setMembershipExpiryDate(LocalDate membershipExpiryDate) {
+        this.membershipExpiryDate = membershipExpiryDate;
+    }
 
     public List<StudentSubjectsEntity> getStudentSubjects() {
         return studentSubjects;

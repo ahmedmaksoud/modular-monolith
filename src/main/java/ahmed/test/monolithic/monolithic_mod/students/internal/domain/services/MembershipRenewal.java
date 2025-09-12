@@ -2,7 +2,6 @@ package ahmed.test.monolithic.monolithic_mod.students.internal.domain.services;
 
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Membership;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Student;
-import ahmed.test.monolithic.monolithic_mod.students.shared.events.MembershipRenewed;
 
 import java.time.Clock;
 import java.time.LocalDate;
@@ -17,7 +16,7 @@ public class MembershipRenewal {
     }
 
 
-    public void renew(Student student, Clock clock, Period term) {
+    public LocalDate renew(Student student, Clock clock, Period term) {
         Membership current = student.getMembership()
                 .orElseThrow(() -> new IllegalStateException("No membership to renew—issue first."));
 
@@ -28,7 +27,7 @@ public class MembershipRenewal {
         Membership renewed = new Membership(today, base.plus(term));
 
 
-        student.applyMembershipRenewal(renewed);
+        return student.applyMembershipRenewal(renewed);
     }
 
 }

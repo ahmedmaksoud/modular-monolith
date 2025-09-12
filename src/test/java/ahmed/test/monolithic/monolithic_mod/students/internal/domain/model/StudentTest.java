@@ -3,6 +3,8 @@ package ahmed.test.monolithic.monolithic_mod.students.internal.domain.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 class StudentTest {
 
     @BeforeEach
@@ -18,7 +20,7 @@ class StudentTest {
     void registerStudent() {
        Student student =  Student.registerStudent(new StudentProp(
                 100,
-                "Ahmed", "Mak", null
+                "Ahmed", "Mak", null,null
         ));
        assert(student != null);
        assert (student instanceof Student);
@@ -30,12 +32,12 @@ class StudentTest {
     void studentEquals() {
         Student studentOne =  Student.registerStudent(new StudentProp(
                 100,
-                "Ahmed", "Mak", null
+                "Ahmed", "Mak", null,null
         ));
 
         Student studenTwo =  Student.registerStudent(new StudentProp(
                 100,
-                "Ahmed", "Mak", null
+                "Ahmed", "Mak", null,null
         ));
 
 
