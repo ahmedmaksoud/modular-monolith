@@ -65,7 +65,7 @@ public class Student extends AggregateRoot<StudentId> {
                 Objects.requireNonNull(lastName, "lastName"),
                 subjects,          // may be null or mutable; ctor copies/normalizes
                 membership,        // may be null
-               null// Objects.requireNonNull(status, "status")
+               status// Objects.requireNonNull(status, "status")
         );
     }
 
