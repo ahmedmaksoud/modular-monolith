@@ -52,22 +52,30 @@ class IssueMembershipServiceTest {
 
     @Test
     void issueMembership_happyPath_savesAndPublishes_andReturnsExpiry() {
-        // Arrange
+
         Integer sid = 42;
+        Student s = mock(Student.class);
+
+        // IMPORTANT: the repo returns THIS EXACT mock
+        when(repo.findByStudentId(any(StudentId.class))).thenReturn(Optional.of(s));
+
+       // when(s.getStudentId()).thenReturn(new StudentId(sid));
+        // Arrange
+
         IssueMembershipRequest req = new IssueMembershipRequest(sid);
 
         // We want occurredEvents() to return the domain events the aggregate would raise.
         // We don’t know the exact date in the service (uses system clock),
         // so we keep event assertions loose and only verify they’re forwarded.
-        MembershipIssued evt1 = new MembershipIssued(42, LocalDate.now(), LocalDate.now().plusYears(1));
+        MembershipIssued evt1 = new MembershipIssued(sid, LocalDate.now(), LocalDate.now().plusYears(1));
 
-        when(student.occurredEvents()).thenReturn(List.of(evt1));
+        when(s.occurredEvents()).thenReturn(List.of(evt1));
 
         // The issuance flow calls student.applyMembershipIssuance(issued) and expects the expiry date back.
         // Stub it to mimic a 1-year term from "now", keeping it tolerant to local time.
         LocalDate expectedExpiryLowerBound = LocalDate.now().plusMonths(10);
         LocalDate expectedExpiryUpperBound = LocalDate.now().plusYears(2);
-        when(student.applyMembershipIssuance(any(Membership.class)))
+        when(s.applyMembershipIssuance(any(Membership.class)))
                 .thenAnswer(inv -> {
                     Membership m = inv.getArgument(0, Membership.class);
                     return m.expiryDate(); // return what issuance created
@@ -80,7 +88,7 @@ class IssueMembershipServiceTest {
         verify(repo).findByStudentId(new StudentId(sid));
         // Saved the same student
         verify(repo).saveStudent(studentCaptor.capture());
-        assertSame(student, studentCaptor.getValue());
+        assertSame(s, studentCaptor.getValue());
 
         // Events forwarded
         verify(events).publishEvent(evt1);

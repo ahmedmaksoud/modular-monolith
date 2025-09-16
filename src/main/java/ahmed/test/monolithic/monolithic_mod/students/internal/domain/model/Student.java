@@ -18,14 +18,17 @@ public class Student extends AggregateRoot<StudentId> {
     private final String lastName;
     private final List<StudentSubjects> subjects;
     private Membership membership;
+    private StudentStatus status;
 
-    private Student(StudentId studentId, String firstName, String lastName, List<StudentSubjects> subjects, Membership membership) {
+    private Student(StudentId studentId, String firstName, String lastName,
+                    List<StudentSubjects> subjects, Membership membership, StudentStatus status) {
         super(studentId);
         this.studentId = studentId;
         this.firstName = Objects.requireNonNull(firstName, "firstName");
         this.lastName  = Objects.requireNonNull(lastName, "lastName");
-        this.subjects  = (subjects != null) ? new ArrayList<>(subjects) : new ArrayList<>();
+        this.subjects  = (subjects != null) ? subjects : new ArrayList<>();
         this.membership = membership;
+        this.status = Objects.requireNonNullElse(status, StudentStatus.REGISTERED);
     }
 
     public static Student registerStudent(StudentProp p) {
@@ -35,7 +38,24 @@ public class Student extends AggregateRoot<StudentId> {
     }
 
     public static Student create(StudentProp p) {
-        return new Student(new StudentId(p.studentId()), p.firstName(), p.lastName(), p.studentSubjectsList(),p.membership());
+        return new Student(new StudentId(p.studentId()), p.firstName(), p.lastName(), p.studentSubjectsList(),p.membership(), StudentStatus.REGISTERED);
+    }
+
+    public static Student rehydrate(StudentId studentId,
+                                    String firstName,
+                                    String lastName,
+                                    List<StudentSubjects> subjects,
+                                    Membership membership,
+                                    StudentStatus status) {
+        // Defensive copy happens inside the constructor
+        return new Student(
+                Objects.requireNonNull(studentId, "studentId"),
+                Objects.requireNonNull(firstName, "firstName"),
+                Objects.requireNonNull(lastName, "lastName"),
+                subjects,          // may be null or mutable; ctor copies/normalizes
+                membership,        // may be null
+               null// Objects.requireNonNull(status, "status")
+        );
     }
 
     public void enrollInSubject(Integer subjectId, SubjectDTO subjectDetails,

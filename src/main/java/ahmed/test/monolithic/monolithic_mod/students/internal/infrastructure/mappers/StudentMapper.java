@@ -2,6 +2,7 @@ package ahmed.test.monolithic.monolithic_mod.students.internal.infrastructure.ma
 
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Membership;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Student;
+import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.StudentId;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.StudentProp;
 
 import ahmed.test.monolithic.monolithic_mod.students.internal.infrastructure.db.StudentEntity;
@@ -22,16 +23,16 @@ public final class StudentMapper {
     public  Student toDomain(StudentEntity e) {
         if (e == null) return null;
         // uses the domain factory (private ctor is respected)
-        return Student.create(new StudentProp(
-                e.getStudentId(),
+        return Student.rehydrate(
+                new StudentId(e.getStudentId()),
                 e.getFirstName(),
                 e.getLastName()
                 ,e.getStudentSubjects() !=null
                 && !e.getStudentSubjects().isEmpty() ? e.getStudentSubjects().stream().map(studentSubjectsMapper::toDomain).toList() : null
                 ,  (e.getMembershipIssueDate() != null
                        && e.getMembershipExpiryDate() !=null)
-                        ? new Membership(e.getMembershipIssueDate(), e.getMembershipExpiryDate()) : null
-        ));
+                        ? new Membership(e.getMembershipIssueDate(), e.getMembershipExpiryDate()) : null, null
+        );
     }
 
     // Domain -> Entity (persistence)
