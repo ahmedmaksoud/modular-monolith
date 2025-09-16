@@ -26,21 +26,32 @@ public class Student extends AggregateRoot<StudentId> {
         this.studentId = studentId;
         this.firstName = Objects.requireNonNull(firstName, "firstName");
         this.lastName  = Objects.requireNonNull(lastName, "lastName");
-        this.subjects  = (subjects != null) ? subjects : new ArrayList<>();
+        this.subjects = new ArrayList<>(subjects != null ? subjects : Collections.emptyList());;
         this.membership = membership;
         this.status = Objects.requireNonNullElse(status, StudentStatus.REGISTERED);
     }
 
-    public static Student registerStudent(StudentProp p) {
-        Student s = create(p);
-        s.raiseEvent(StudentRegistered.from(s));
-        return s;
-    }
 
+    /**
+     * create student 1st time
+     * @param p
+     * @return
+     */
     public static Student create(StudentProp p) {
-        return new Student(new StudentId(p.studentId()), p.firstName(), p.lastName(), p.studentSubjectsList(),p.membership(), StudentStatus.REGISTERED);
+        return new Student(new StudentId(p.studentId()), p.firstName(), p.lastName(),
+                p.studentSubjectsList(),p.membership(), StudentStatus.REGISTERED);
     }
 
+    /**
+     * load object from database
+     * @param studentId
+     * @param firstName
+     * @param lastName
+     * @param subjects
+     * @param membership
+     * @param status
+     * @return
+     */
     public static Student rehydrate(StudentId studentId,
                                     String firstName,
                                     String lastName,
@@ -56,6 +67,12 @@ public class Student extends AggregateRoot<StudentId> {
                 membership,        // may be null
                null// Objects.requireNonNull(status, "status")
         );
+    }
+
+    public static Student registerStudent(StudentProp p) {
+        Student s = create(p);
+        s.raiseEvent(StudentRegistered.from(s));
+        return s;
     }
 
     public void enrollInSubject(Integer subjectId, SubjectDTO subjectDetails,
@@ -83,21 +100,6 @@ public class Student extends AggregateRoot<StudentId> {
 
     }
 
-    public List<StudentSubjects> getSubjects() {
-        return Collections.unmodifiableList(subjects);
-    }
-
-    public StudentId getStudentId() {
-        return studentId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
 
     public Optional<Membership> getMembership() { return Optional.ofNullable(membership); }
 
@@ -117,5 +119,26 @@ public class Student extends AggregateRoot<StudentId> {
         // raise event inside the aggregate
         raiseEvent(new MembershipIssued(studentId.value(), issued.issueDate(), issued.expiryDate()));
         return issued.expiryDate();
+    }
+
+
+    public List<StudentSubjects> getSubjects() {
+        return Collections.unmodifiableList(subjects);
+    }
+
+    public StudentId getStudentId() {
+        return studentId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public StudentStatus getStatus() {
+        return status;
     }
 }

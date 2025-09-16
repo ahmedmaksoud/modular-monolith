@@ -1,9 +1,6 @@
 package ahmed.test.monolithic.monolithic_mod.students.internal.infrastructure.mappers;
 
-import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Membership;
-import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Student;
-import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.StudentId;
-import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.StudentProp;
+import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.*;
 
 import ahmed.test.monolithic.monolithic_mod.students.internal.infrastructure.db.StudentEntity;
 import org.springframework.stereotype.Component;
@@ -31,7 +28,8 @@ public final class StudentMapper {
                 && !e.getStudentSubjects().isEmpty() ? e.getStudentSubjects().stream().map(studentSubjectsMapper::toDomain).toList() : null
                 ,  (e.getMembershipIssueDate() != null
                        && e.getMembershipExpiryDate() !=null)
-                        ? new Membership(e.getMembershipIssueDate(), e.getMembershipExpiryDate()) : null, null
+                        ? new Membership(e.getMembershipIssueDate(), e.getMembershipExpiryDate()) : null,
+                StudentStatus.fromCode(e.getStudentStatus())
         );
     }
 
@@ -52,7 +50,7 @@ public final class StudentMapper {
         if(d.getSubjects() != null ) e.setStudentSubjects(d.getSubjects().stream().map(studentSubjectsMapper::toEntity).toList() ) ;
         if(d.getMembership().isPresent()) e.setMembershipIssueDate(d.getMembership().get().issueDate());
         if(d.getMembership().isPresent()) e.setMembershipExpiryDate(d.getMembership().get().expiryDate());
-
+        e.setStudentStatus(d.getStatus().getCode());
         return e;
     }
 }

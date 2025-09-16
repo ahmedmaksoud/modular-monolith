@@ -25,6 +25,7 @@ public enum StudentStatus {
         throw new IllegalArgumentException("Invalid code: " + code);
     }
 
+
     public boolean canTransitionTo(StudentStatus target) {
         return switch (this) {
             case REGISTERED, SUSPENDED -> target == ACTIVE;

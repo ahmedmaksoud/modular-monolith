@@ -27,6 +27,10 @@ public class StudentEntity {
     @Column(name = "membership_expiry_date")
     private LocalDate membershipExpiryDate;
 
+    private int studentStatus;
+
+
+
     public LocalDate getMembershipIssueDate() {
         return membershipIssueDate;
     }
@@ -78,6 +82,11 @@ public class StudentEntity {
         this.lastName = lastName;
     }
 
+    public int getStudentStatus() {
+        return studentStatus;
+    }
 
-
+    public void setStudentStatus(int studentStatus) {
+        this.studentStatus = studentStatus;
+    }
 }
