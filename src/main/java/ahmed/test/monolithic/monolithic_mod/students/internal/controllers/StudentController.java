@@ -9,14 +9,12 @@ import ahmed.test.monolithic.monolithic_mod.students.internal.application.regist
 import ahmed.test.monolithic.monolithic_mod.students.internal.application.registration.RegisterSubjectResponse;
 import ahmed.test.monolithic.monolithic_mod.students.internal.application.registration.RegistrarStudentService;
 import ahmed.test.monolithic.monolithic_mod.students.internal.application.registration.StudentResponse;
-import ahmed.test.monolithic.monolithic_mod.students.internal.services.StudentService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/student")
  class StudentController {
 
-    private StudentService studentService;
     private RegistrarStudentService registrarStudentService;
     private RenewMembershipService renewMembershipService;
     private IssueMembershipService issueMembershipService;
@@ -24,17 +22,13 @@ import org.springframework.web.bind.annotation.*;
     private IApplogger logger = AppLoggers.get(StudentController.class);
 
 
-    public StudentController(StudentService studentService, RegistrarStudentService registrarStudentService, RenewMembershipService renewMembershipService, IssueMembershipService issueMembershipService) {
-        this.studentService = studentService;
+    public StudentController( RegistrarStudentService registrarStudentService, RenewMembershipService renewMembershipService, IssueMembershipService issueMembershipService) {
         this.registrarStudentService = registrarStudentService;
         this.renewMembershipService = renewMembershipService;
         this.issueMembershipService = issueMembershipService;
     }
 
-    @PostMapping("updateStudent/{studentId}")
-    void updateStudent(@PathVariable int studentId, @RequestParam String firstName, @RequestParam String lastName) {
-        studentService.updateStudent(studentId, firstName, lastName);
-    }
+
 
 
 
