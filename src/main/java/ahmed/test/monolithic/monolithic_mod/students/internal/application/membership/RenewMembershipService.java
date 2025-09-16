@@ -23,7 +23,7 @@ public class RenewMembershipService {
         this.events = events;
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public RenewMembershipResponse renewMembership(RenewMembershipRequest renewMembershipRequest) {
         Student student = repo.findByStudentId (new StudentId(renewMembershipRequest.studentId()))
                 .orElseThrow(() -> new NotFoundException("Student not found: " + renewMembershipRequest.studentId()));

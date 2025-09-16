@@ -103,8 +103,8 @@ public class Student extends AggregateRoot<StudentId> {
 
     public Optional<Membership> getMembership() { return Optional.ofNullable(membership); }
 
-    private void assignMembership(Membership renewed) {
-        this.membership = Objects.requireNonNull(renewed, "membership");
+    private void assignMembership(Membership membership) {
+        this.membership = Objects.requireNonNull(membership, "membership");
     }
 
     public LocalDate applyMembershipRenewal(Membership renewed) {

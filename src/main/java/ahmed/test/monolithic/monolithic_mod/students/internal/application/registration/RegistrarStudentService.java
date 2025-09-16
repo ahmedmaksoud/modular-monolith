@@ -42,7 +42,7 @@ public class RegistrarStudentService extends ApplicationService {
      * @param registerStudent
      * @return
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public StudentResponse registerStudent(RegisterStudent registerStudent) {
         Integer studNextVal = studentRepository.getNextStudentId();
         var student = Student.registerStudent(new StudentProp(
@@ -71,7 +71,7 @@ public class RegistrarStudentService extends ApplicationService {
      * @param registerSubject
      * @return
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public RegisterSubjectResponse registerStudentSubject(RegisterSubject registerSubject) {
         String userLang = "ar";
         Optional<Student> student = studentRepository.findByStudentId(new StudentId(registerSubject.studentId()));

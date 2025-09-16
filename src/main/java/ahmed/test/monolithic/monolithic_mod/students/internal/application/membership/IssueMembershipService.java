@@ -24,7 +24,7 @@ public class IssueMembershipService {
         this.events = events;
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public IssueMembershipResponse issueMemberShip(IssueMembershipRequest issueMembershipRequest) {
         Student student = repo.findByStudentId (new StudentId(issueMembershipRequest.studentId()))
                 .orElseThrow(() -> new NotFoundException("Student not found: " + issueMembershipRequest.studentId()));
