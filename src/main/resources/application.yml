@@ -29,6 +29,7 @@ logging:
   level:
     root: info
     org.springframework.web: info
+    ahmed.test.monolithic.monolithic_mod: DEBUG
     #    oracle.ucp: trace
     org.hibernate.SQL: DEBUG
     org.hibernate.envers: trace
