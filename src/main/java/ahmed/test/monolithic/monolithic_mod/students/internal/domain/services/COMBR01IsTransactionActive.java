@@ -12,6 +12,9 @@ import org.slf4j.ILoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Business Rule framework-agnostic , Spring Bean generated in run time
+ */
 public class COMBR01IsTransactionActive implements IBaseBusinessRules<Student, List<AppMessage>, User> {
     public static final String BUSINESS_RULE_CODE_COM_BR_01 = "COM_BR_01";
     private final IStudentRepository studentRepository;

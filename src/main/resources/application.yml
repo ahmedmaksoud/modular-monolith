@@ -1,6 +1,8 @@
 spring:
   application:
    name: monolithic
+   messages:
+     basename: locale/messages
   datasource:
    username: school
    password: school
