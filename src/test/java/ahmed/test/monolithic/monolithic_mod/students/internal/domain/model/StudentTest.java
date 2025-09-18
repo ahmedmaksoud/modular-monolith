@@ -25,6 +25,8 @@ class StudentTest {
        assert(student != null);
        assert (student instanceof Student);
        assert ( student.getStudentId().value().equals(100));
+       assert ( student.getStatus().equals(StudentStatus.REGISTERED));
+
 
     }
 
