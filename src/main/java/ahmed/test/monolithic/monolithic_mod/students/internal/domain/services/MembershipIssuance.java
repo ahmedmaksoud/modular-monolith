@@ -9,10 +9,9 @@ import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Stude
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Objects;
 import java.util.Optional;
 
-public class MembershipIsssuance {
+public class MembershipIssuance {
        public LocalDate issue(Student student, Clock clock, Period term){
         Optional<Membership> current = student.getMembership();
         current.ifPresent(val -> {

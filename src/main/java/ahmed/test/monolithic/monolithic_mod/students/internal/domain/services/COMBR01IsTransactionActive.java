@@ -28,7 +28,7 @@ public class COMBR01IsTransactionActive implements IBaseBusinessRules<Student, L
 
 
     @Override
-    public boolean isNotValid(Student s, User user) {
+    public boolean evaluate(Student s, User user) {
 
         return false;
     }

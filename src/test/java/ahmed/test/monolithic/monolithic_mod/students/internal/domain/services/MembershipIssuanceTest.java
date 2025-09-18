@@ -28,10 +28,10 @@ import static org.junit.jupiter.api.Assertions.*;
         Period defaultTerm = Period.ofMonths(12);
 
         ExtendFromMaxPolicy renewalPolicy = new ExtendFromMaxPolicy();
-        MembershipIsssuance membershipIsssuance =  new MembershipIsssuance();
+        MembershipIssuance membershipIssuance =  new MembershipIssuance();
 
         assertThrows(AlreadyIssuedMemberShip.class, () -> {
-           membershipIsssuance.issue(student, clock, defaultTerm);
+           membershipIssuance.issue(student, clock, defaultTerm);
         });
 
 
@@ -51,10 +51,10 @@ import static org.junit.jupiter.api.Assertions.*;
         Period defaultTerm = Period.ofMonths(12);
 
         ExtendFromMaxPolicy renewalPolicy = new ExtendFromMaxPolicy();
-        MembershipIsssuance membershipIsssuance =  new MembershipIsssuance();
+        MembershipIssuance membershipIssuance =  new MembershipIssuance();
 
 
-        LocalDate expDate =  membershipIsssuance.issue(student, clock, defaultTerm);
+        LocalDate expDate =  membershipIssuance.issue(student, clock, defaultTerm);
 
         assertNotNull(expDate, "expDate should not be null");
         assertEquals(expDate, LocalDate.now().plusYears(1) );

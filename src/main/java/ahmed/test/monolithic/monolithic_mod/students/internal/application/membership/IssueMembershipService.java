@@ -4,9 +4,7 @@ import ahmed.test.monolithic.monolithic_mod.shared.exception.NotFoundException;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.contracts.IStudentRepository;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Student;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.StudentId;
-import ahmed.test.monolithic.monolithic_mod.students.internal.domain.services.ExtendFromMaxPolicy;
-import ahmed.test.monolithic.monolithic_mod.students.internal.domain.services.MembershipIsssuance;
-import ahmed.test.monolithic.monolithic_mod.students.internal.domain.services.MembershipRenewal;
+import ahmed.test.monolithic.monolithic_mod.students.internal.domain.services.MembershipIssuance;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,8 +30,8 @@ public class IssueMembershipService {
         Clock clock = Clock.systemDefaultZone();
         Period defaultTerm = Period.ofYears(1);
 
-        MembershipIsssuance membershipIsssuance =  new MembershipIsssuance();
-        LocalDate expDate =  membershipIsssuance.issue(student, clock, defaultTerm);
+        MembershipIssuance membershipIssuance =  new MembershipIssuance();
+        LocalDate expDate =  membershipIssuance.issue(student, clock, defaultTerm);
         repo.saveStudent(student);
         student.occurredEvents().forEach(e -> {
             events.publishEvent(e);

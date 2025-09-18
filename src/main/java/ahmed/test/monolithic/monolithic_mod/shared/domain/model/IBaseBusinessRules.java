@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface IBaseBusinessRules<T extends DomainModel,
         C extends List<? extends AppMessage>, U extends User> {
-    public boolean isNotValid(T i, User user);
+    public boolean evaluate(T i, User user);
 
     public List<AppMessage> addMessage(T i, User userDTO);
 
