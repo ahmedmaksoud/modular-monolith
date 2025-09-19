@@ -9,7 +9,7 @@ import ahmed.test.monolithic.monolithic_mod.shared.domain.services.BaseUseCase;
 import ahmed.test.monolithic.monolithic_mod.shared.exception.BusinessRuleException;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Membership;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Student;
-import ahmed.test.monolithic.monolithic_mod.students.internal.domain.services.businnes_rules.COMBR01MembershipAlreadyIssued;
+import ahmed.test.monolithic.monolithic_mod.students.internal.domain.services.business_rules.COMBR01MembershipAlreadyIssued;
 
 import java.time.Clock;
 import java.time.LocalDate;

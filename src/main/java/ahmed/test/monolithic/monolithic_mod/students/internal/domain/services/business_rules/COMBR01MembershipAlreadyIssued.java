@@ -1,4 +1,4 @@
-package ahmed.test.monolithic.monolithic_mod.students.internal.domain.services.businnes_rules;
+package ahmed.test.monolithic.monolithic_mod.students.internal.domain.services.business_rules;
 
 import ahmed.test.monolithic.monolithic_mod.shared.IApplogger;
 import ahmed.test.monolithic.monolithic_mod.shared.domain.model.AppMessage;

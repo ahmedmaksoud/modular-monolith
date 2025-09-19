@@ -2,12 +2,11 @@ package ahmed.test.monolithic.monolithic_mod.students.internal.domain.services;
 
 import ahmed.test.monolithic.monolithic_mod.shared.domain.model.IBaseBusinessRules;
 import ahmed.test.monolithic.monolithic_mod.shared.domain.model.User;
-import ahmed.test.monolithic.monolithic_mod.shared.exception.AlreadyIssuedMemberShip;
 import ahmed.test.monolithic.monolithic_mod.shared.exception.BusinessRuleException;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Membership;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Student;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.StudentProp;
-import ahmed.test.monolithic.monolithic_mod.students.internal.domain.services.businnes_rules.COMBR01MembershipAlreadyIssued;
+import ahmed.test.monolithic.monolithic_mod.students.internal.domain.services.business_rules.COMBR01MembershipAlreadyIssued;
 import org.junit.jupiter.api.Test;
 
 import java.time.Clock;
