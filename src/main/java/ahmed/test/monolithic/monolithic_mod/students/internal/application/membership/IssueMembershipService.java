@@ -1,5 +1,7 @@
 package ahmed.test.monolithic.monolithic_mod.students.internal.application.membership;
 
+import ahmed.test.monolithic.monolithic_mod.shared.application.BusinessRuleEngineService;
+import ahmed.test.monolithic.monolithic_mod.shared.domain.model.User;
 import ahmed.test.monolithic.monolithic_mod.shared.exception.NotFoundException;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.contracts.IStudentRepository;
 import ahmed.test.monolithic.monolithic_mod.students.internal.domain.model.Student;
@@ -15,11 +17,14 @@ import java.time.*;
 public class IssueMembershipService {
     private final IStudentRepository repo;
     private final ApplicationEventPublisher events;
+    private final BusinessRuleEngineService businessRuleEngineService;
 
 
-    public IssueMembershipService(IStudentRepository repo, ApplicationEventPublisher events) {
+    public IssueMembershipService(IStudentRepository repo, ApplicationEventPublisher events,
+                                  BusinessRuleEngineService businessRuleEngineService) {
         this.repo = repo;
         this.events = events;
+        this.businessRuleEngineService = businessRuleEngineService;
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -29,9 +34,9 @@ public class IssueMembershipService {
 
         Clock clock = Clock.systemDefaultZone();
         Period defaultTerm = Period.ofYears(1);
-
+        User user = new User();
         MembershipIssuance membershipIssuance =  new MembershipIssuance();
-        LocalDate expDate =  membershipIssuance.issue(student, clock, defaultTerm);
+        LocalDate expDate =  membershipIssuance.issue(student, clock, defaultTerm, user, businessRuleEngineService.getBusinessRules());
         repo.saveStudent(student);
         student.occurredEvents().forEach(e -> {
             events.publishEvent(e);

@@ -3,15 +3,16 @@ package ahmed.test.monolithic.monolithic_mod.shared.domain.model;
 public class AppMessage {
 
     private final MessageTypes messageType;
-    private final String messageCode;
+    private final String messageKey;
     private final String[] params;
     private final String[] urlParams;
     private final String fieldName;
     private final String linkUrl;
 
-    public AppMessage(MessageTypes messageType, String messageCode, String[] params, String[] urlParams, String fieldName, String linkUrl) {
+    public AppMessage(MessageTypes messageType, String messageKey, String[] params,
+                      String[] urlParams, String fieldName, String linkUrl) {
         this.messageType = messageType;
-        this.messageCode = messageCode;
+        this.messageKey = messageKey;
         this.params = params;
         this.urlParams = urlParams;
         this.fieldName = fieldName;
@@ -33,8 +34,8 @@ public class AppMessage {
         return messageType;
     }
 
-    public String getMessageCode() {
-        return messageCode;
+    public String getMessageKey() {
+        return messageKey;
     }
 
     public String[] getParams() {

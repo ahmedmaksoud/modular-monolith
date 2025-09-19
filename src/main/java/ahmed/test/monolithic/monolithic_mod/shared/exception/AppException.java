@@ -34,7 +34,7 @@ public class AppException extends RuntimeException {
 
     }
 
-    public Optional<List<AppMessage>> getErrorCodes() {
+    public Optional<List<AppMessage>> getMessages() {
         return messages;
     }
 
