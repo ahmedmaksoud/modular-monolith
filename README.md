@@ -9,7 +9,7 @@ Using DDD, clean Archticure, technology-agnostic and framework-agnostic
 - Spring Modulith 1.4.1
 - PostgreSQL + Flyway
 - JPA/Hibernate
-- Packaging: WAR
+- Packaging: JAP
 
 ## 🚀 Getting started
 1. Clone:
