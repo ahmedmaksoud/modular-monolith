@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ahmed.test.monolithic</groupId>
-	<artifactId>monolithic-modular</artifactId>
+	<artifactId>modular-monolith</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 	<name>monolithic</name>
