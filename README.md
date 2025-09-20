@@ -53,6 +53,18 @@ Place Flyway SQL files under `src/main/resources/db/migration`.
 ** Events: Represent significant occurrences within the domain (“something happened”).
   
 ** Contracts: Interfaces that specify rules and expectations, ensuring that implementers adhere to defined behaviors.
+
+##Infrastructure
+
+** Database Entities: Persistence-oriented representations of domain objects, optimized for relational databases.
+
+** Mappers: Converters between domain models and database entities .
+
+** JPA Repositories: Abstractions that expose domain-friendly access methods, hiding persistence complexity.
+
+** Repositories:  Spring Data JPA interfaces for basic CRUD persistence operations 
+
+** Gateways: Interfaces to external systems (e.g., APIs, ..).
 <img width="994" height="1192" alt="image" src="https://github.com/user-attachments/assets/7ca1d4d2-caa1-44e7-a788-356081be57e6" />
 
 
