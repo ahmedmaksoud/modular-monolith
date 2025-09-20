@@ -43,6 +43,10 @@ Place Flyway SQL files under `src/main/resources/db/migration`.
 ## Components
 <img width="878" height="569" alt="image" src="https://github.com/user-attachments/assets/51c8a9cb-c232-4de4-81fb-46acede999f7" />
 
+## Physical Design
+<img width="1008" height="1088" alt="image" src="https://github.com/user-attachments/assets/d0881a65-cbd5-47d0-9d1d-b681a1931f03" />
+
+
 
 <img width="5304" height="4240" alt="image" src="https://github.com/user-attachments/assets/8ad1d2ed-a4bd-4010-b341-946d722fe4f1" />
 
