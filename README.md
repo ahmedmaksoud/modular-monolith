@@ -46,6 +46,15 @@ Place Flyway SQL files under `src/main/resources/db/migration`.
 ## Physical Design
 <img width="994" height="1192" alt="image" src="https://github.com/user-attachments/assets/7ca1d4d2-caa1-44e7-a788-356081be57e6" />
 
+#Domain
+
+  Model: Pure business objects (POJOs in Java) that are independent of technical concerns. They represent the core domain concepts.
+  
+  Services: Define and implement business use cases that orchestrate domain logic.
+  
+  Events: Represent significant occurrences within the domain (“something happened”).
+  
+  Contracts: Interfaces that specify rules and expectations, ensuring that implementers adhere to defined behaviors.
 
 
 
