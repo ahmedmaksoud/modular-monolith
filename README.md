@@ -21,7 +21,7 @@ Using DDD, clean Archticure, technology-agnostic and framework-agnostic
 ## 🚀 Getting started
 1. Clone:
 ```bash
-git clone https://github.com/ahmedmaksoud/monolithic-modular.git
+git clone https://github.com/ahmedmaksoud/modular-monolith.git
 cd monolithic-modular
 ```
 2. Run Postgres (see docker-compose.yml)
@@ -35,7 +35,7 @@ mvn -DskipTests flyway:migrate
 mvn clean package
 mvn spring-boot:run
 # or
-java -jar target/monolithic-modular-*.war
+java -jar target/monolithic-modular-*.jar
 ```
 
 
@@ -63,6 +63,7 @@ Place Flyway SQL files under `src/main/resources/db/migration`.
 ** Events: Represent significant occurrences within the domain (“something happened”).
   
 ** Contracts: Interfaces that specify rules and expectations, ensuring that implementers adhere to defined behaviors.
+“contracts” are Java interfaces that define what the "Students" domain expects from the rest of the system (repositories, publishers, services, etc.). They’re the ports that keep domain logic pure and decoupled—implementations live elsewhere and are injected (e.g., via Spring) at runtime. 
 
 ** Buisness Rules Engin: validate business actoions
 
