@@ -69,7 +69,7 @@ Place Flyway SQL files under `src/main/resources/db/migration`.
 
 ** Gateways: Interfaces to external systems (e.g., APIs, ..).
 
-##Application Services (Orchestrators):
+##Application Services (Orchestrators): 
 
 ** Coordinate domain operations across aggregates and services.
 
