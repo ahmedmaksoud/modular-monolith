@@ -63,6 +63,7 @@ Place Flyway SQL files under `src/main/resources/db/migration`.
 ** Events: Represent significant occurrences within the domain (“something happened”).
   
 ** Contracts: Interfaces that specify rules and expectations, ensuring that implementers adhere to defined behaviors.
+“contracts” are Java interfaces that define what the "Students" domain expects from the rest of the system (repositories, publishers, services, etc.). They’re the ports that keep domain logic pure and decoupled—implementations live elsewhere and are injected (e.g., via Spring) at runtime. 
 
 ** Buisness Rules Engin: validate business actoions
 
