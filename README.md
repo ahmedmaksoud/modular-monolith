@@ -1,4 +1,4 @@
-#  Modular Monolithic(Spring Boot Modulith) with DDD
+#  Modular Monolithic (Spring Boot Modulith) with DDD
 
 
 
