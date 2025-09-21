@@ -21,7 +21,7 @@ Using DDD, clean Archticure, technology-agnostic and framework-agnostic
 ## 🚀 Getting started
 1. Clone:
 ```bash
-git clone https://github.com/ahmedmaksoud/monolithic-modular.git
+git clone https://github.com/ahmedmaksoud/modular-monolith.git
 cd monolithic-modular
 ```
 2. Run Postgres (see docker-compose.yml)
@@ -35,7 +35,7 @@ mvn -DskipTests flyway:migrate
 mvn clean package
 mvn spring-boot:run
 # or
-java -jar target/monolithic-modular-*.war
+java -jar target/monolithic-modular-*.jar
 ```
 
 
