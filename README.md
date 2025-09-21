@@ -7,7 +7,7 @@ Using DDD, clean Archticure, technology-agnostic and framework-agnostic
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=java,postgres,spring,hibernate,maven" />
+    <img src="https://skillicons.dev/icons?i=java,postgres,spring,hibernate,maven,mq" />
   </a>
 </p>
 ## ✨ Tech stack
