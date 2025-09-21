@@ -1,5 +1,11 @@
 #  Modular Monolithic(Spring Boot Modulith) with DDD
 
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=git,kubernetes,docker,c,vim" />
+  </a>
+</
+
 A pragmatic **modular monolith** built with **Spring Boot 3.5.5**, **Spring Modulith 1.4.1**, **Java 21**, **PostgreSQL**, and **Flyway**.
 Using DDD, clean Archticure, technology-agnostic and framework-agnostic 
 
