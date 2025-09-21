@@ -4,8 +4,17 @@ public class User {
 
     private LANGS lang;
 
-    public static enum LANGS {
-        ARABIC, ENGLISH
+    public  enum LANGS {
+        ARABIC(1), ENGLISH(2);
+        private final int code;
+
+        LANGS(int code) {
+            this.code = code;
+        }
+
+        public int getCode() {
+            return code;
+        }
 
     }
     public LANGS getLang() {
