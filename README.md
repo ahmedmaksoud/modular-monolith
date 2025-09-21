@@ -48,10 +48,6 @@ mvn test
 Place Flyway SQL files under `src/main/resources/db/migration`.
 
 ## 📁 Components [Logical Design]
-Every Components has two subcomponents Internal/External
-
-<img width="1012" height="701" alt="image" src="https://github.com/user-attachments/assets/62458ef1-b5c7-4a09-8a05-f4ab2f50a1b8" />
-
 
 
 <img width="1525" height="992" alt="image" src="https://github.com/user-attachments/assets/0db440e9-9198-42d9-a702-70840987be27" />
@@ -94,7 +90,12 @@ Every Components has two subcomponents Internal/External
 
 ** Act as a bridge between domain logic and infrastructure.
 
+
 <img width="994" height="1192" alt="image" src="https://github.com/user-attachments/assets/7ca1d4d2-caa1-44e7-a788-356081be57e6" />
+
+Every Components has two subcomponents Internal/External
+
+<img width="1012" height="701" alt="image" src="https://github.com/user-attachments/assets/62458ef1-b5c7-4a09-8a05-f4ab2f50a1b8" />
 
 
 ## Events
