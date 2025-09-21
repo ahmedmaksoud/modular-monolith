@@ -68,6 +68,19 @@ Place Flyway SQL files under `src/main/resources/db/migration`.
 ** Repositories:  Spring Data JPA interfaces for basic CRUD persistence operations 
 
 ** Gateways: Interfaces to external systems (e.g., APIs, ..).
+
+##Application Services (Orchestrators):
+
+** Coordinate domain operations across aggregates and services.
+
+** Persist database entities through repositories.
+
+** Manage transactions consistently.
+
+** Publish events to message queues or other external systems.
+
+** Act as a bridge between domain logic and infrastructure.
+
 <img width="994" height="1192" alt="image" src="https://github.com/user-attachments/assets/7ca1d4d2-caa1-44e7-a788-356081be57e6" />
 
 
