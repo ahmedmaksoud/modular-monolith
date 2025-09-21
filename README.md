@@ -86,7 +86,8 @@ Place Flyway SQL files under `src/main/resources/db/migration`.
 
 ## Events
 
-<img width="1762" height="1016" alt="image" src="https://github.com/user-attachments/assets/5eb8dc1c-2aed-4363-b256-40e7cb2155c1" />
+<img width="1738" height="736" alt="image" src="https://github.com/user-attachments/assets/85e119d5-3746-4883-9eb9-a79d23fbca03" />
+
 
 
 
