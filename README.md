@@ -55,6 +55,8 @@ Place Flyway SQL files under `src/main/resources/db/migration`.
   
 ** Contracts: Interfaces that specify rules and expectations, ensuring that implementers adhere to defined behaviors.
 
+** Buisness Rules Engin: validate business actoions
+
 ##Infrastructure
 
 ** Database Entities: Persistence-oriented representations of domain objects, optimized for relational databases.
