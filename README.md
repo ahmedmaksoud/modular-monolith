@@ -104,7 +104,7 @@ Every Components has two subcomponents Internal/External
 <img width="1744" height="801" alt="image" src="https://github.com/user-attachments/assets/2150ab2d-4af6-40d1-be38-edef9fa7653a" />
 
 
-
+Register Student Sequance Diagram 
 
 
 <img width="2004" height="2437" alt="untitled" src="https://github.com/user-attachments/assets/3e6e3c34-d11d-4d5f-a380-a89310c460f9" />
