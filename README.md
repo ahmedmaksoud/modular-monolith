@@ -99,6 +99,11 @@ Every Components has two subcomponents Internal/External
 <img width="1012" height="701" alt="image" src="https://github.com/user-attachments/assets/62458ef1-b5c7-4a09-8a05-f4ab2f50a1b8" />
 
 
+## Communication Patterns
+## Public APIs
+
+<img width="1297" height="656" alt="image" src="https://github.com/user-attachments/assets/dede307e-2ca2-4e61-956c-78eab0e85abc" />
+
 ## Events
 
 <img width="1744" height="801" alt="image" src="https://github.com/user-attachments/assets/2150ab2d-4af6-40d1-be38-edef9fa7653a" />
