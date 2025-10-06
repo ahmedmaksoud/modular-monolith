@@ -23,16 +23,16 @@ public class MembershipIssuance extends BaseUseCase {
        public LocalDate issue(Student student, Clock clock, Period term, User user,
                               List<IBaseBusinessRules> baseBusinessRules) {
 
-       Optional<List<AppMessage>> messages =  validateServiceBR(student, user, Arrays.asList(
-               COMBR01MembershipAlreadyIssued.BUSINESS_RULE_CODE_COM_BR_01), baseBusinessRules );
-       if (messages.isPresent() && messages.get().size() > 0) {
-           throw new BusinessRuleException("validation exception", null, messages);
+           Optional<List<AppMessage>> messages =  validateServiceBR(student, user, Arrays.asList(
+                   COMBR01MembershipAlreadyIssued.BUSINESS_RULE_CODE_COM_BR_01), baseBusinessRules );
+           if (messages.isPresent() && messages.get().size() > 0) {
+               throw new BusinessRuleException("validation exception", null, messages);
 
+           }
+           LocalDate today = LocalDate.now(clock);
+           Membership issued = new Membership(today, today.plus(term));
+           return student.applyMembershipIssuance(issued);
        }
-       LocalDate today = LocalDate.now(clock);
-       Membership issued = new Membership(today, today.plus(term));
-       return student.applyMembershipIssuance(issued);
-    }
 
 
 
